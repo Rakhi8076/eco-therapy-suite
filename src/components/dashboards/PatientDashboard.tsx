@@ -3,6 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useAuth } from '@/contexts/AuthContext';
+import { AIChatbot } from '@/components/ui/ai-chatbot';
+import { CalendarScheduler } from '@/components/ui/calendar-scheduler';
+import { NotificationBell } from '@/components/ui/notification-bell';
+import { DietRecommendations } from '@/components/ui/diet-recommendations';
 import { 
   Calendar, 
   Clock, 
@@ -14,7 +18,8 @@ import {
   Bell,
   ChevronRight,
   Heart,
-  Activity
+  Activity,
+  Bot
 } from 'lucide-react';
 
 export const PatientDashboard = () => {
@@ -44,9 +49,7 @@ export const PatientDashboard = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon">
-                <Bell className="h-5 w-5" />
-              </Button>
+              <NotificationBell />
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <User className="h-4 w-4 text-primary" />
@@ -138,10 +141,14 @@ export const PatientDashboard = () => {
                       </div>
                     </div>
                   ))}
-                  <Button variant="outline" className="w-full">
-                    <Calendar className="h-4 w-4 mr-2" />
-                    View Full Calendar
-                  </Button>
+                  <CalendarScheduler
+                    trigger={
+                      <Button variant="outline" className="w-full">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        Schedule New Session
+                      </Button>
+                    }
+                  />
                 </CardContent>
               </Card>
 
@@ -221,9 +228,13 @@ export const PatientDashboard = () => {
                       <span className="font-medium">Good</span>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="w-full">
-                    View Full Plan
-                  </Button>
+                  <DietRecommendations
+                    trigger={
+                      <Button variant="outline" size="sm" className="w-full">
+                        View Full Plan
+                      </Button>
+                    }
+                  />
                 </CardContent>
               </Card>
 
@@ -245,10 +256,14 @@ export const PatientDashboard = () => {
                     <span>Support Groups</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
-                    <span>AI Chatbot</span>
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
+                  <AIChatbot
+                    trigger={
+                      <Button variant="ghost" className="w-full justify-between" size="sm">
+                        <span>AI Wellness Assistant</span>
+                        <Bot className="h-4 w-4" />
+                      </Button>
+                    }
+                  />
                 </CardContent>
               </Card>
             </div>

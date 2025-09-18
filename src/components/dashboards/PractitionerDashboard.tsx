@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { useAuth } from '@/contexts/AuthContext';
+import { PatientSearch } from '@/components/ui/patient-search';
+import { QueueManagement } from '@/components/ui/queue-management';
+import { NotificationBell } from '@/components/ui/notification-bell';
 import { 
   Users, 
   Search, 
@@ -22,6 +25,7 @@ import {
 
 export const PractitionerDashboard = () => {
   const { user, logout } = useAuth();
+  const [activeView, setActiveView] = useState<'patients' | 'queue'>('patients');
 
   const todayPatients = [
     { id: 1, name: 'Ravi Kumar', time: '10:00 AM', therapy: 'Abhyanga', status: 'confirmed' },
@@ -51,9 +55,7 @@ export const PractitionerDashboard = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon">
-                <Bell className="h-5 w-5" />
-              </Button>
+              <NotificationBell />
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <Stethoscope className="h-4 w-4 text-primary" />
@@ -129,61 +131,37 @@ export const PractitionerDashboard = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Patient List */}
+              {/* Patient Management */}
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div>
                       <CardTitle className="flex items-center space-x-2">
                         <Users className="h-5 w-5 text-primary" />
-                        <span>Today's Appointments</span>
+                        <span>Patient Management</span>
                       </CardTitle>
-                      <CardDescription>Manage your patient schedule</CardDescription>
+                      <CardDescription>Search and manage your patients</CardDescription>
                     </div>
-                    <Button variant="outline" size="sm">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      Schedule
-                    </Button>
+                    <div className="flex space-x-2">
+                      <Button 
+                        variant={activeView === 'patients' ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => setActiveView('patients')}
+                      >
+                        Patients
+                      </Button>
+                      <Button 
+                        variant={activeView === 'queue' ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => setActiveView('queue')}
+                      >
+                        Queue
+                      </Button>
+                    </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Search patients..." className="pl-10" />
-                  </div>
-                  
-                  <div className="space-y-3">
-                    {todayPatients.map((patient) => (
-                      <div key={patient.id} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                            <User className="h-6 w-6 text-primary" />
-                          </div>
-                          <div>
-                            <h4 className="font-medium">{patient.name}</h4>
-                            <p className="text-sm text-muted-foreground">{patient.therapy}</p>
-                          </div>
-                        </div>
-                        <div className="text-right space-y-1">
-                          <p className="font-medium text-sm">{patient.time}</p>
-                          <Badge 
-                            variant={
-                              patient.status === 'confirmed' ? 'default' :
-                              patient.status === 'in-progress' ? 'secondary' :
-                              patient.status === 'waiting' ? 'outline' : 'secondary'
-                            }
-                            className="text-xs"
-                          >
-                            {patient.status}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Button variant="outline" className="w-full">
-                    View All Patients
-                  </Button>
+                <CardContent>
+                  {activeView === 'patients' ? <PatientSearch /> : <QueueManagement />}
                 </CardContent>
               </Card>
 
