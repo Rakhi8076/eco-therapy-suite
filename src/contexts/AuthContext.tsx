@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       id: '1',
       email,
       name: email.split('@')[0],
-      role: 'patient', // Default role, will be selected later
+      role: undefined as any, // No role assigned yet
     };
 
     setAuthState({
@@ -61,7 +61,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       id: '2',
       email: 'user@gmail.com',
       name: 'Google User',
-      role: 'patient',
+      role: undefined as any, // No role assigned yet
     };
 
     setAuthState({
@@ -81,7 +81,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       id: '3',
       email: 'user@icloud.com',
       name: 'Apple User',
-      role: 'patient',
+      role: undefined as any, // No role assigned yet
     };
 
     setAuthState({
