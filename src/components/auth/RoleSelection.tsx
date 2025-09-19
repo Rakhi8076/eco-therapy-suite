@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,7 +19,7 @@ const roleOptions: RoleOption[] = [
     role: 'patient',
     title: 'Patient',
     description: 'Access your therapy sessions and wellness journey',
-    icon: <User className="h-8 w-8" />,
+    icon: <User className="h-8 w-8 text-green-600" />,
     features: [
       'Schedule therapy sessions',
       'Track wellness progress',
@@ -30,7 +31,7 @@ const roleOptions: RoleOption[] = [
     role: 'practitioner',
     title: 'Practitioner',
     description: 'Manage patients and therapy sessions',
-    icon: <Stethoscope className="h-8 w-8" />,
+    icon: <Stethoscope className="h-8 w-8 text-blue-600" />,
     features: [
       'Patient management',
       'Therapy planning',
@@ -42,7 +43,7 @@ const roleOptions: RoleOption[] = [
     role: 'institutional-admin',
     title: 'Institutional Admin',
     description: 'Oversee clinic operations and resources',
-    icon: <Building2 className="h-8 w-8" />,
+    icon: <Building2 className="h-8 w-8 text-purple-600" />,
     features: [
       'Resource allocation',
       'Staff management',
@@ -54,7 +55,7 @@ const roleOptions: RoleOption[] = [
     role: 'super-admin',
     title: 'Super Admin',
     description: 'Platform-wide management and oversight',
-    icon: <Shield className="h-8 w-8" />,
+    icon: <Shield className="h-8 w-8 text-red-600" />,
     features: [
       'Platform configuration',
       'Security management',
@@ -72,21 +73,21 @@ export const RoleSelection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-6xl space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <div className="mx-auto w-20 h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center shadow-lg">
-            <span className="text-2xl font-bold text-primary-foreground">P</span>
+          <div className="mx-auto w-20 h-20 bg-gradient-to-br from-green-500 to-green-400 rounded-2xl flex items-center justify-center shadow-lg">
+            <span className="text-2xl font-bold text-white">P</span>
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Welcome, {user?.name}!</h1>
-            <p className="text-muted-foreground mt-2">Select your role to access your personalized dashboard</p>
+            <h1 className="text-3xl font-bold text-gray-900">Welcome, {user?.name}!</h1>
+            <p className="text-gray-600 mt-2">Select your role to access your personalized dashboard</p>
           </div>
           <Button 
             variant="ghost" 
             onClick={logout}
-            className="text-sm"
+            className="text-sm text-blue-600 hover:text-blue-800"
           >
             Switch Account
           </Button>
@@ -97,16 +98,16 @@ export const RoleSelection = () => {
           {roleOptions.map((option) => (
             <Card 
               key={option.role}
-              className="relative group cursor-pointer hover:shadow-xl transition-all duration-300 border-0 bg-card/80 backdrop-blur-sm hover:scale-[1.02]"
+              className="relative group cursor-pointer hover:shadow-xl transition-all duration-300 border bg-white hover:scale-[1.02]"
               onClick={() => handleRoleSelect(option.role)}
             >
               <CardHeader className="text-center space-y-4">
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/10 to-primary-light/20 rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                <div className="mx-auto w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   {option.icon}
                 </div>
                 <div>
                   <CardTitle className="text-xl">{option.title}</CardTitle>
-                  <CardDescription className="mt-2">
+                  <CardDescription className="mt-2 text-gray-600">
                     {option.description}
                   </CardDescription>
                 </div>
@@ -114,16 +115,15 @@ export const RoleSelection = () => {
               <CardContent className="space-y-4">
                 <ul className="space-y-2">
                   {option.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
+                    <li key={index} className="flex items-center text-sm text-gray-500">
+                      <div className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <Button 
-                  variant="medical" 
                   size="sm" 
-                  className="w-full mt-4"
+                  className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white"
                 >
                   Select Role
                 </Button>
@@ -133,7 +133,7 @@ export const RoleSelection = () => {
         </div>
 
         {/* Help Text */}
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-gray-500">
           <p>Need help choosing? Contact our support team for assistance.</p>
         </div>
       </div>
