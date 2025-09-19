@@ -47,9 +47,13 @@ export const PractitionerDashboard = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center">
-                <span className="text-lg font-bold text-primary-foreground">P</span>
-              </div>
+              <div className="mx-auto w-12 h-12 rounded-full shadow-lg overflow-hidden">
+                <img 
+                src="/logo.png" 
+                alt="App Logo" 
+                className="w-full h-full object-cover"
+                />
+                </div>
               <div>
                 <h1 className="text-xl font-semibold text-foreground">PanchArogya - Practitioner</h1>
               </div>
