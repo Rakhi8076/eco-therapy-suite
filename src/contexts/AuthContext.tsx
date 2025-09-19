@@ -1,28 +1,31 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { User, UserRole, AuthState } from '@/types/auth';
 
+// Context type including all auth functions
 interface AuthContextType extends AuthState {
   login: (email: string, password: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
   loginWithApple: () => Promise<void>;
   selectRole: (role: UserRole) => void;
   logout: () => void;
+  updateUserName: (name: string) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const useAuth = () => {
+// Custom hook
+export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 };
 
+// Provider props
 interface AuthProviderProps {
   children: ReactNode;
 }
 
+// Provider component
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [authState, setAuthState] = useState<AuthState>({
     user: null,
@@ -30,82 +33,60 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     isLoading: false,
   });
 
-  const login = async (email: string, password: string): Promise<void> => {
+  // Generic mock login function
+  const mockLogin = async (user: User) => {
     setAuthState(prev => ({ ...prev, isLoading: true }));
-    
-    // Mock authentication - in real app this would be JWT/Firebase
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Mock user data
-    const mockUser: User = {
-      id: '1',
-      email,
-      name: email.split('@')[0],
-      role: undefined as any, // No role assigned yet
-    };
-
+    await new Promise(resolve => setTimeout(resolve, 1000)); // simulate delay
     setAuthState({
-      user: mockUser,
+      user,
       isAuthenticated: true,
       isLoading: false,
     });
   };
 
-  const loginWithGoogle = async (): Promise<void> => {
-    setAuthState(prev => ({ ...prev, isLoading: true }));
-    
-    // Mock Google auth
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const mockUser: User = {
-      id: '2',
-      email: 'user@gmail.com',
-      name: 'Google User',
-      role: undefined as any, // No role assigned yet
-    };
+  // -------------------------
+  // LOGIN FUNCTIONS
+  // -------------------------
+ const login = (email: string, password: string, name: string) => {
+    const user: User = { id: '1', email, name, role: undefined as any };
+    return mockLogin(user);
+};
 
-    setAuthState({
-      user: mockUser,
-      isAuthenticated: true,
-      isLoading: false,
-    });
+
+const loginWithGoogle = (name?: string) => {
+  const user: User = { 
+    id: '2', 
+    email: 'user@gmail.com', 
+    name: name?.trim() || 'Google User', // ✅ optional custom name
+    role: undefined as any 
   };
+  return mockLogin(user);
+};
 
-  const loginWithApple = async (): Promise<void> => {
-    setAuthState(prev => ({ ...prev, isLoading: true }));
-    
-    // Mock Apple auth
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const mockUser: User = {
-      id: '3',
-      email: 'user@icloud.com',
-      name: 'Apple User',
-      role: undefined as any, // No role assigned yet
-    };
-
-    setAuthState({
-      user: mockUser,
-      isAuthenticated: true,
-      isLoading: false,
-    });
+const loginWithApple = (name?: string) => {
+  const user: User = { 
+    id: '3', 
+    email: 'user@icloud.com', 
+    name: name?.trim() || 'Apple User', // ✅ optional custom name
+    role: undefined as any 
   };
+  return mockLogin(user);
+};
 
+
+  // -------------------------
+  // OTHER FUNCTIONS
+  // -------------------------
   const selectRole = (role: UserRole) => {
-    if (authState.user) {
-      setAuthState(prev => ({
-        ...prev,
-        user: { ...prev.user!, role }
-      }));
-    }
+    if (!authState.user) return;
+    setAuthState(prev => ({ ...prev, user: { ...prev.user!, role } }));
   };
 
-  const logout = () => {
-    setAuthState({
-      user: null,
-      isAuthenticated: false,
-      isLoading: false,
-    });
+  const logout = () => setAuthState({ user: null, isAuthenticated: false, isLoading: false });
+
+  const updateUserName = (name: string) => {
+    if (!authState.user) return;
+    setAuthState(prev => ({ ...prev, user: { ...prev.user!, name } }));
   };
 
   return (
@@ -117,6 +98,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         loginWithApple,
         selectRole,
         logout,
+        updateUserName,
       }}
     >
       {children}

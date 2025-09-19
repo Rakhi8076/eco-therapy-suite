@@ -14,9 +14,12 @@ export const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+const [forgotMessage, setForgotMessage] = useState('');
   const { login, loginWithGoogle, loginWithApple } = useAuth();
   const { toast } = useToast();
+
+
+
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,9 +70,14 @@ export const LoginPage = () => {
       <div className="w-full max-w-md space-y-8">
         {/* Logo and Header */}
         <div className="text-center space-y-4">
-          <div className="mx-auto w-20 h-20 bg-gradient-to-br from-green-500 to-green-400 rounded-2xl flex items-center justify-center shadow-lg">
-            <span className="text-2xl font-bold text-white">P</span>
-          </div>
+         <div className="mx-auto w-20 h-20 rounded-full shadow-lg overflow-hidden">
+         <img 
+         src="/logo.png" 
+         alt="App Logo" 
+         className="w-full h-full object-cover"
+         />
+         </div>
+
           <div>
             <h1 className="text-3xl font-bold text-gray-900">PanchArogya</h1>
             <p className="text-gray-600 mt-2">Holistic Ayurvedic Healthcare Platform</p>
@@ -126,18 +134,32 @@ export const LoginPage = () => {
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <input
-                    id="remember"
-                    type="checkbox"
-                    className="accent-green-600"
-                  />
-                  <Label htmlFor="remember" className="text-sm">Remember me</Label>
-                </div>
-                <Button variant="link" className="px-0 text-sm text-blue-600 hover:text-blue-800">
-                  Forgot password?
-                </Button>
-              </div>
+  <div className="flex items-center space-x-2">
+    <input
+      id="remember"
+      type="checkbox"
+      className="rounded border-border"
+    />
+    <Label htmlFor="remember" className="text-sm">Remember me</Label>
+  </div>
+  
+  <div className="flex flex-col items-end">
+    {!forgotMessage ? (
+      <Button
+      variant="link"
+      className="px-0 text-sm"
+      onClick={() => setForgotMessage('Check your email to reset your password.')}
+      >
+        Forgot password?
+        </Button>
+        ) : (
+        <p className="text-green-600 text-sm mt-2 text-right">
+          {forgotMessage}
+          </p>
+        )}
+        </div>
+      </div>
+
 
               <Button
                 type="submit"
