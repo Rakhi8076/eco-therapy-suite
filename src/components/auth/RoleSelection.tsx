@@ -44,7 +44,7 @@ export const RoleSelection = () => {
           <div className="mx-auto w-20 h-20 rounded-full shadow-lg overflow-hidden">
             <img 
               src="/logo.png" 
-              alt="App Logo" 
+              alt="web Logo" 
               className="w-full h-full object-cover"
             />
           </div>
