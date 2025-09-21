@@ -3,9 +3,11 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
 
 const SuperAdminForm: React.FC = () => {
   const { user, selectRole } = useAuth();
+  const navigate = useNavigate(); // ✅ initialize navigate
 
   const [formData, setFormData] = useState({
     name: user?.name || "",
@@ -30,7 +32,12 @@ const SuperAdminForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Super Admin Form Data:", formData);
+
+    // ✅ Select role in auth context
     selectRole("super-admin");
+
+    // ✅ Navigate to Super Admin Dashboard
+    navigate("/super-admin-dashboard");
   };
 
   return (

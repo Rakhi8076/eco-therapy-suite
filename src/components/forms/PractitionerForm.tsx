@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const PractitionerForm: React.FC = () => {
   const { selectRole } = useAuth();
+  const navigate = useNavigate(); // Initialize the hook
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,8 +38,12 @@ const PractitionerForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Practitioner Form Data:", formData);
-    // Ab practitioner role select karenge
+    
+    // Select the practitioner role (as per your existing logic)
     selectRole("practitioner");
+
+    // Redirect to the Practitioner Dashboard
+    navigate("/practitioner-dashboard");
   };
 
   return (

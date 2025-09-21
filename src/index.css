@@ -4,6 +4,14 @@
 
 /* PanchArogya Healthcare Design System - Earthy greens and professional healthcare styling */
 @layer base {
+  /* This is the key fix to remove all space from the edges */
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+  }
+  
   :root {
     --background: 120 20% 98%;
     --foreground: 120 15% 15%;
@@ -45,6 +53,13 @@
     --primary-light: 140 35% 75%;
     --primary-dark: 140 40% 35%;
   }
+  
+  /* Apply base styles safely */
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
 }
 
 /* Custom Tailwind utility for border using CSS variable */
@@ -52,15 +67,4 @@
   .border-border {
     border: 1px solid hsl(var(--border));
   }
-}
-
-/* Apply base styles safely */
-@layer base {
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
-
-  /* Optional: apply border to all elements if needed */
-  
 }

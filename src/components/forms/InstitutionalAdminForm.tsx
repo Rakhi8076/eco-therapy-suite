@@ -3,9 +3,11 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
 
 const InstitutionalAdminForm: React.FC = () => {
   const { selectRole } = useAuth();
+  const navigate = useNavigate(); // ✅ initialize navigate
 
   const [formData, setFormData] = useState({
     institutionName: "",
@@ -37,7 +39,12 @@ const InstitutionalAdminForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Institutional Admin Form Data:", formData);
+    
+    // Select role in auth context
     selectRole("institutional-admin");
+
+    // ✅ Navigate to Institutional Admin Dashboard after submit
+    navigate("/institutional-admin-dashboard");
   };
 
   return (

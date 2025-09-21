@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
 import { UserRole } from "@/types/auth";
 import { User, Stethoscope, Building2, Shield } from "lucide-react";
@@ -12,11 +12,13 @@ import InstitutionalAdminForm from "@/components/forms/InstitutionalAdminForm";
 import SuperAdminForm from "@/components/forms/SuperAdminForm";
 
 export const RoleSelection = () => {
-  const { user, logout, updateUserName } = useAuth(); // ✅ added updateUserName
+  const { user, logout, updateUserName, selectRole } = useAuth(); // ✅ added selectRole
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
 
+  // Updated: handleRoleSelect now updates AuthContext
   const handleRoleSelect = (role: UserRole) => {
-    setSelectedRole(role);
+    selectRole(role);      // update role in AuthContext
+    setSelectedRole(role); // keep local state for UI
   };
 
   // Function to handle patient form submit
@@ -24,7 +26,7 @@ export const RoleSelection = () => {
     if (updateUserName) {
       updateUserName(name); // update name in AuthContext
     }
-    setSelectedRole("patient"); // keep selected role active
+    handleRoleSelect("patient"); // keep selected role active & update context
   };
 
   // Map roles to form components

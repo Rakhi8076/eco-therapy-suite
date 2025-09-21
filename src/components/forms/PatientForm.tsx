@@ -3,9 +3,11 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom"; // ✅ Import
 
 const PatientForm: React.FC = () => {
   const { selectRole, updateUserName } = useAuth();
+  const navigate = useNavigate(); // ✅ Navigate hook
 
   const [formData, setFormData] = useState({
     name: "",
@@ -38,8 +40,11 @@ const PatientForm: React.FC = () => {
     // 2️⃣ Select patient role
     selectRole("patient");
 
-    // Optionally: show success message or navigate
-    alert("Form submitted successfully!");
+    // ✅ Navigate to PatientDashboard
+    navigate("/patient-dashboard");
+
+    // Optionally: show success message
+    // alert("Form submitted successfully!"); // not needed if redirecting
   };
 
   return (
