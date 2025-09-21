@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,36 +11,35 @@ import { PractitionerDashboard } from "@/components/dashboards/PractitionerDashb
 import { InstitutionalAdminDashboard } from "@/components/dashboards/InstitutionalAdminDashboard";
 import { SuperAdminDashboard } from "@/components/dashboards/SuperAdminDashboard";
 import NotFound from "./pages/NotFound";
+import { LandingPage } from "@/components/LandingPage";
 
 const queryClient = new QueryClient();
 
-const AppRoutes = () => {
-  const { isAuthenticated, user } = useAuth();
+// This component is now not in use as we are adding a dedicated route for the LoginPage
+// const AppRoutes = () => {
+//   const { isAuthenticated, user } = useAuth();
 
-  // If not authenticated, show login page
-  if (!isAuthenticated) {
-    return <LoginPage />;
-  }
+//   if (!isAuthenticated) {
+//     return <LoginPage />;
+//   }
 
-  // If authenticated but no role selected, show role selection
-  if (!user?.role) {
-    return <RoleSelection />;
-  }
+//   if (!user?.role) {
+//     return <RoleSelection />;
+//   }
 
-  // Route to appropriate dashboard based on role
-  switch (user.role) {
-    case 'patient':
-      return <PatientDashboard />;
-    case 'practitioner':
-      return <PractitionerDashboard />;
-    case 'institutional-admin':
-      return <InstitutionalAdminDashboard />;
-    case 'super-admin':
-      return <SuperAdminDashboard />;
-    default:
-      return <RoleSelection />;
-  }
-};
+//   switch (user.role) {
+//     case 'patient':
+//       return <PatientDashboard />;
+//     case 'practitioner':
+//       return <PractitionerDashboard />;
+//     case 'institutional-admin':
+//       return <InstitutionalAdminDashboard />;
+//     case 'super-admin':
+//       return <SuperAdminDashboard />;
+//     default:
+//       return <RoleSelection />;
+//   }
+// };
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -51,8 +49,22 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<AppRoutes />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Landing Page route */}
+            <Route path="/" element={<LandingPage />} />
+            
+            {/* Added a dedicated route for the login page */}
+            <Route path="/login" element={<LoginPage />} />
+
+            {/* Added a dedicated route for role selection */}
+            <Route path="/role-selection" element={<RoleSelection />} />
+
+            {/* Added routes for all the dashboards */}
+            <Route path="/patient-dashboard" element={<PatientDashboard />} />
+            <Route path="/practitioner-dashboard" element={<PractitionerDashboard />} />
+            <Route path="/institutional-admin-dashboard" element={<InstitutionalAdminDashboard />} />
+            <Route path="/super-admin-dashboard" element={<SuperAdminDashboard />} />
+
+            {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
@@ -60,23 +72,5 @@ const App = () => (
     </AuthProvider>
   </QueryClientProvider>
 );
-=======
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import TreatmentSection from './components/TreatmentSection';
-import Footer from './components/Footer';
-
-function App() {
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <Hero />
-      <TreatmentSection />
-      <Footer />
-    </div>
-  );
-}
->>>>>>> frontpage/main
 
 export default App;

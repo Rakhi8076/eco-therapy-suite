@@ -14,13 +14,12 @@
 
     /* Linting */
     "strict": true,
-<<<<<<< HEAD
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-=======
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
->>>>>>> frontpage/main
+
     "noFallthroughCasesInSwitch": true
   },
   "include": ["vite.config.ts"]

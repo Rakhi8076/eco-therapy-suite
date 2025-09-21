@@ -1,26 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import SIH1 from '../assets/SIH1.png'; 
+import sih8 from '../assets/sih 8.png';
+import sih9 from '../assets/sih 9.png';
+import sih6 from '../assets/Sih 6.png';
+import { useTranslation } from 'react-i18next';
+
+const images = [SIH1, sih8, sih9,sih6];
 
 const Hero = () => {
+  const { t } = useTranslation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative h-screen bg-cover bg-center bg-no-repeat" 
-             style={{backgroundImage: 'url(https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop)'}}>
+    <section className="relative h-screen">
+      {/* Background Image */}
+      <img
+        src={images[currentImageIndex]}
+        alt="Hero"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out"
+      />
+
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      
+
+      {/* Hero Text */}
       <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-center text-white px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <button className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-yellow-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
-              Book Appointment
-            </button>
-          </div>
+        <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug mb-6">
+            {t('Rediscover Yourself with Holistic Healing')}
+          </h1>
+          <p className="text-lg sm:text-xl font-medium text-gray-200">
+            {t('Experience the ancient wisdom of Ayurveda for a balanced and healthy life.')}
+          </p>
         </div>
       </div>
 
-      {/* Navigation arrows */}
-      <button className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-yellow-400 transition-colors">
+      {/* Navigation Arrows */}
+      <button
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-yellow-400"
+        onClick={() => setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length)}
+      >
         ❮
       </button>
-      <button className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-yellow-400 transition-colors">
+      <button
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-yellow-400"
+        onClick={() => setCurrentImageIndex((currentImageIndex + 1) % images.length)}
+      >
         ❯
       </button>
     </section>
