@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
 
 /* PanchArogya Healthcare Design System - Earthy greens and professional healthcare styling */
 
@@ -136,3 +137,5 @@
     @apply bg-background text-foreground;
   }
 }
+=======
+>>>>>>> frontpage/main

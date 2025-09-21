@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -59,5 +60,23 @@ const App = () => (
     </AuthProvider>
   </QueryClientProvider>
 );
+=======
+import React from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import TreatmentSection from './components/TreatmentSection';
+import Footer from './components/Footer';
+
+function App() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <Hero />
+      <TreatmentSection />
+      <Footer />
+    </div>
+  );
+}
+>>>>>>> frontpage/main
 
 export default App;
