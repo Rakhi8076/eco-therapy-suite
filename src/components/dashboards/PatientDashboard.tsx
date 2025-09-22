@@ -34,7 +34,7 @@ export const PatientDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-muted/30 to-accent/20">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-muted/30 to-accent/20" style={{ backgroundColor: '#FFF9F3' }}>
       
       {/* Header */}
       <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-sm border-b border-border shadow-sm">
@@ -44,18 +44,24 @@ export const PatientDashboard = () => {
               <div className="w-12 h-12 rounded-full shadow-lg overflow-hidden">
                 <img src="/logo.png" alt="App Logo" className="w-full h-full object-cover" />
               </div>
-              <h1 className="text-xl font-semibold text-foreground">PanchArogya</h1>
+              <h1 className="text-xl font-semibold text-foreground" style={{ color: '#AF4F06' }}>PanchArogya</h1>
             </div>
             <div className="flex items-center space-x-4">
               <NotificationBell />
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                  <User className="h-4 w-4 text-primary" />
+                  <User className="h-4 w-4 text-primary" style={{ color: '#AF4F06' }}/>
                 </div>
-                <span className="text-sm font-medium">{user?.name}</span>
+                <span className="text-sm font-medium" style={{ color: '#AF4F06' }}>{user?.name}</span>
               </div>
-              <Button variant="ghost" onClick={logout} size="sm">Logout</Button>
-            </div>
+<Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+                                onClick={logout}>
+                              Logout
+                            </Button>
+                                        </div>
           </div>
         </div>
       </header>
@@ -65,7 +71,7 @@ export const PatientDashboard = () => {
         
         {/* Welcome Section */}
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Welcome back, {user?.name}!</h2>
+          <h2 className="text-3xl font-bold text-foreground" style={{ color: '#AF4F06' }}>Welcome back, {user?.name}!</h2>
           <p className="text-muted-foreground">Continue your wellness journey with personalized Ayurvedic care</p>
         </div>
 
@@ -80,13 +86,13 @@ export const PatientDashboard = () => {
               <Heart className="h-8 w-8 text-success" />
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+          <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
             <CardContent className="p-6 flex justify-between items-center">
               <div>
-                <p className="text-sm font-medium text-primary">Sessions Completed</p>
-                <p className="text-2xl font-bold text-primary">12</p>
+                <p className="text-sm font-medium text-success">Sessions Completed</p>
+                <p className="text-2xl font-bold text-success">12</p>
               </div>
-              <Activity className="h-8 w-8 text-primary" />
+              <Activity className="h-8 w-8 text-success" />
             </CardContent>
           </Card>
           <Card className="bg-gradient-to-br from-warning/10 to-warning/5 border-warning/20">
@@ -108,17 +114,21 @@ export const PatientDashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Calendar className="h-5 w-5 text-primary" />
+                  <Calendar className="h-5 w-5 text-primary" style={{ color: '#AF4F06' }} />
                   <span>Today's Schedule</span>
                 </CardTitle>
                 <CardDescription>Your therapy sessions for today</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {upcomingSessions.map((session) => (
-                  <div key={session.id} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Clock className="h-6 w-6 text-primary" />
+                  <div
+  key={session.id}
+  className="flex items-center justify-between p-4 rounded-lg border border-[#AF4F06]"
+>
+
+<div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(175, 79, 6, 0.6)" }}>
+                        <Clock className="h-6 w-6 text-primary" style={{ color: '#AF4F06' }} />
                       </div>
                       <div>
                         <h4 className="font-medium">{session.therapy}</h4>
@@ -127,36 +137,46 @@ export const PatientDashboard = () => {
                     </div>
                     <div className="text-right">
                       <p className="font-medium">{session.time}</p>
-                      <Badge variant="outline" className="mt-1">Confirmed</Badge>
+                      <Badge 
+  variant="outline" 
+  className="mt-1 border-[#AF4F06] text-[#AF4F06]"
+>
+  Confirmed
+</Badge>
+
                     </div>
                   </div>
                 ))}
                 <CalendarScheduler
                   trigger={
-                    <Button variant="outline" className="w-full">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      Schedule New Session
-                    </Button>
+                    <Button
+  variant="outline"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30"
+>
+  <Calendar className="h-4 w-4 mr-2" />
+  Schedule New Session
+</Button>
+
                   }
                 />
               </CardContent>
             </Card>
 
             {/* Therapy Videos */}
-            <Card>
+            <Card >
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Play className="h-5 w-5 text-primary" />
+                  <Play className="h-5 w-5 text-primary" style={{ color: '#cfdc54ff' }} />
                   <span>Therapy Demo Videos</span>
                 </CardTitle>
                 <CardDescription>Learn about your upcoming treatments</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4" >
                   {['Abhyanga Massage', 'Shirodhara Therapy', 'Panchakarma Process', 'Meditation Guide'].map((video, index) => (
                     <div key={index} className="group cursor-pointer">
-                      <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-2 group-hover:from-primary/30 group-hover:to-primary/20 transition-colors">
-                        <Play className="h-8 w-8 text-primary" />
+<div className="aspect-video rounded-lg flex items-center justify-center mb-2 bg-[#CFDC54]/40 transition-colors">
+                        <Play className="h-8 w-8 text-primary" style={{ color: '#cfdc54ff' }}/>
                       </div>
                       <h4 className="font-medium text-sm">{video}</h4>
                     </div>
@@ -172,20 +192,27 @@ export const PatientDashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Clock className="h-5 w-5 text-primary" />
-                  <span>Live Queue</span>
+                  <Clock className="h-5 w-5 text-primary" style={{ color: '#AF4F06' }}/>
+                  <span style={{ color: '#AF4F06' }}>Live Queue</span>
                 </CardTitle>
                 <CardDescription>Your current position</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4"style={{ color: '#AF4F06' }}>
                 {todayQueue.map((queue, index) => (
-                  <div key={index} className="text-center p-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg">
-                    <div className="text-3xl font-bold text-primary mb-2">#{queue.position}</div>
-                    <p className="text-sm text-muted-foreground">in queue for {queue.therapy}</p>
+                  <div key={index} className="text-center p-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg" style={{ backgroundColor: "#FFF9F3" }}>
+                    <div className="text-3xl font-bold text-primary mb-2"style={{ color: '#AF4F06' }}>#{queue.position}</div>
+                    <p className="text-sm text-muted-foreground" style={{ color: '#AF4F06' }}>in queue for {queue.therapy}</p>
                     <p className="text-sm font-medium mt-1">Est. wait: {queue.estimatedTime}</p>
                   </div>
                 ))}
-                <Button variant="outline" size="sm" className="w-full">Update Status</Button>
+                <Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30"
+>
+  Update Status
+</Button>
+
               </CardContent>
             </Card>
 
@@ -193,7 +220,7 @@ export const PatientDashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <UtensilsCrossed className="h-5 w-5 text-primary" />
+                  <UtensilsCrossed className="h-5 w-5 text-primary" style={{ color: '#AF4F06' }}/>
                   <span>Diet Recommendations</span>
                 </CardTitle>
                 <CardDescription>Today's Ayurvedic meal plan</CardDescription>
@@ -217,34 +244,50 @@ export const PatientDashboard = () => {
                   </div>
                 </div>
                 <DietRecommendations
-                  trigger={<Button variant="outline" size="sm" className="w-full">View Full Plan</Button>}
+                  trigger={<Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30"
+>
+  View Full Plan
+</Button>
+}
                 />
               </CardContent>
             </Card>
 
             {/* Community Hub */}
-            <Card>
+            <Card style={{ color: '#AF4F06' }}>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <MessageSquare className="h-5 w-5 text-primary" />
+                  <MessageSquare className="h-5 w-5 text-primary" style={{ color: '#AF4F06' }}/>
                   <span>Community</span>
                 </CardTitle>
                 <CardDescription>Connect with others</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button variant="ghost" className="w-full justify-between" size="sm">
-                  <span>Wellness Tips</span>
+<Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30"
+>                  <span>Wellness Tips</span>
                   <ChevronRight className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" className="w-full justify-between" size="sm">
-                  <span>Support Groups</span>
+<Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30"
+>                  <span>Support Groups</span>
                   <ChevronRight className="h-4 w-4" />
                 </Button>
                 <AIChatbot
                   trigger={
-                    <Button variant="ghost" className="w-full justify-between" size="sm">
-                      <span>AI Wellness Assistant</span>
-                      <Bot className="h-4 w-4" />
+<Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30"
+>                      <span style={{ color: '#cfdc54ff' }}>AI Wellness Assistant</span>
+                      <Bot className="h-4 w-4" style={{ color: '#cfdc54ff' }} />
                     </Button>
                   }
                 />

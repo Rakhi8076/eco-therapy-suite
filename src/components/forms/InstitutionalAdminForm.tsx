@@ -56,23 +56,23 @@ const InstitutionalAdminForm: React.FC = () => {
       <CardContent>
         <form className="space-y-3" onSubmit={handleSubmit}>
           {/* Institution Info */}
-          <Input name="institutionName" placeholder="Institution Name" value={formData.institutionName} onChange={handleChange} />
-          <Input name="contactPerson" placeholder="Contact Person Name" value={formData.contactPerson} onChange={handleChange} />
-          <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-          <Input name="phone" type="tel" placeholder="Phone Number" value={formData.phone} onChange={handleChange} />
+          <Input name="institutionName" placeholder="Institution Name" value={formData.institutionName} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="contactPerson" placeholder="Contact Person Name" value={formData.contactPerson} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="phone" type="tel" placeholder="Phone Number" value={formData.phone} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
           <textarea
             name="address"
             placeholder="Address"
             value={formData.address}
             onChange={handleChange}
             className="w-full p-2 rounded border border-gray-300"
-          />
+          style={{ backgroundColor: '#FFFfff' }}/>
 
           {/* Professional / Legal Info */}
-          <Input name="professionalDetails" placeholder="Professional / Legal Details" value={formData.professionalDetails} onChange={handleChange} />
-          <Input name="institutionType" placeholder="Type of Institution (Hospital, Clinic, Lab, etc.)" value={formData.institutionType} onChange={handleChange} />
-          <Input name="registrationNumber" placeholder="Registration / License Number" value={formData.registrationNumber} onChange={handleChange} />
-          <Input name="issuingAuthority" placeholder="Issuing Authority (State / National Medical Council, Health Dept.)" value={formData.issuingAuthority} onChange={handleChange} />
+          <Input name="professionalDetails" placeholder="Professional / Legal Details" value={formData.professionalDetails} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }} />
+          <Input name="institutionType" placeholder="Type of Institution (Hospital, Clinic, Lab, etc.)" value={formData.institutionType} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="registrationNumber" placeholder="Registration / License Number" value={formData.registrationNumber} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="issuingAuthority" placeholder="Issuing Authority (State / National Medical Council, Health Dept.)" value={formData.issuingAuthority} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
 
           {/* Documents Upload */}
           <div>
@@ -85,10 +85,10 @@ const InstitutionalAdminForm: React.FC = () => {
           </div>
 
           {/* Login Credentials */}
-          <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-          <Input name="otp" placeholder="OTP / 2FA Verification (optional)" value={formData.otp} onChange={handleChange} />
+          <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="otp" placeholder="OTP / 2FA Verification (optional)" value={formData.otp} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
 
-          <Button type="submit" className="w-full mt-4">Submit</Button>
+          <Button type="submit" className="w-full mt-4"style={{ backgroundColor: '#AF4F06' }}>Submit</Button>
         </form>
       </CardContent>
     </Card>

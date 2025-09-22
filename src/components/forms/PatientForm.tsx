@@ -61,6 +61,7 @@ const PatientForm: React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            style={{ backgroundColor: '#FFFfff' }}
           />
           <Input
             name="age"
@@ -69,6 +70,7 @@ const PatientForm: React.FC = () => {
             value={formData.age}
             onChange={handleChange}
             required
+            style={{ backgroundColor: '#FFFfff' }}
           />
           <select
             name="gender"
@@ -88,7 +90,7 @@ const PatientForm: React.FC = () => {
             placeholder="Contact Number"
             value={formData.contact}
             onChange={handleChange}
-          />
+          style={{ backgroundColor: '#FFFfff' }}/>
           <Input
             name="email"
             type="email"
@@ -96,7 +98,7 @@ const PatientForm: React.FC = () => {
             value={formData.email}
             onChange={handleChange}
             required
-          />
+          style={{ backgroundColor: '#FFFfff' }}/>
           <textarea
             name="address"
             placeholder="Address"
@@ -111,7 +113,12 @@ const PatientForm: React.FC = () => {
             onChange={handleChange}
             className="w-full p-2 rounded border border-gray-300"
           />
-          <Button type="submit" className="w-full mt-4">
+          <Button type="submit" className="w-full mt-4"
+          style={{
+                  backgroundColor: '#CA8A04', // gold background
+                  color: '#FFFFFF',           // white text
+                  border: 'none'              // optional: remove border
+                }}>
             Submit
           </Button>
         </form>

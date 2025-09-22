@@ -49,21 +49,21 @@ const SuperAdminForm: React.FC = () => {
       <CardContent>
         <form className="space-y-3" onSubmit={handleSubmit}>
           {/* Personal Info */}
-          <Input name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
-          <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-          <Input name="phone" type="tel" placeholder="Phone" value={formData.phone} onChange={handleChange} />
+          <Input name="name" placeholder="Name" value={formData.name} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="phone" type="tel" placeholder="Phone" value={formData.phone} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
 
           {/* Profile Picture */}
           <div>
             <label className="block text-sm font-medium mb-1">Profile Picture (optional)</label>
-            <input type="file" name="profilePicture" accept="image/*" onChange={handleChange} />
+            <input type="file" name="profilePicture" accept="image/*" onChange={handleChange}style={{ backgroundColor: '#FFFfff' }} />
           </div>
 
           {/* Account Management */}
-          <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-          <Input name="otp" placeholder="OTP / 2FA Verification (optional)" value={formData.otp} onChange={handleChange} />
+          <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="otp" placeholder="OTP / 2FA Verification (optional)" value={formData.otp} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
 
-          <Button type="submit" className="w-full mt-4">Save Changes</Button>
+          <Button type="submit" className="w-full mt-4" style={{ backgroundColor: '#AF4F06' }}>Save Changes</Button>
         </form>
       </CardContent>
     </Card>

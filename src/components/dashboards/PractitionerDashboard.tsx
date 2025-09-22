@@ -41,7 +41,7 @@ export const PractitionerDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-muted/30 to-accent/20" style={{ backgroundColor: '#FFF9F3' }}>
       {/* Header */}
       <div className="bg-card/80 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,20 +55,24 @@ export const PractitionerDashboard = () => {
                 />
                 </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground">PanchArogya - Practitioner</h1>
+                <h1 className="text-xl font-semibold text-foreground"style={{ color: '#AF4F06' }}>PanchArogya - Practitioner</h1>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <NotificationBell />
+            <div className="flex items-center space-x-4" style={{ color: '#AF4F06' }}>
+              <NotificationBell/>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Stethoscope className="h-4 w-4 text-primary" />
+                  <Stethoscope className="h-4 w-4 text-primary" style={{ color: '#AF4F06' }}/>
                 </div>
-                <span className="text-sm font-medium">Dr. {user?.name}</span>
+                <span className="text-sm font-medium" >Dr. {user?.name}</span>
               </div>
-              <Button variant="ghost" onClick={logout} size="sm">
-                Logout
-              </Button>
+              <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+                                onClick={logout}>
+                              Logout
+                            </Button>
             </div>
           </div>
         </div>
@@ -79,23 +83,27 @@ export const PractitionerDashboard = () => {
         <div className="space-y-8">
           {/* Welcome Section */}
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold text-foreground">Good morning, Dr. {user?.name}!</h2>
+            <h2 className="text-3xl font-bold text-foreground"style = {{ color: '#AF4F06'}}>Good morning, Dr. {user?.name}!</h2>
             <p className="text-muted-foreground">You have 4 appointments today. Let's help your patients on their wellness journey.</p>
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-primary">Today's Patients</p>
-                    <p className="text-2xl font-bold text-primary">4</p>
-                  </div>
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6" >
+            <Card className="bg-[#AF4F06]/5 border-[#AF4F06]/20">
+  <CardContent className="p-6">
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium text-[#AF4F06]">
+          Today's Patients
+        </p>
+        <p className="text-2xl font-bold text-[#AF4F06]">4</p>
+      </div>
+      <Users className="h-8 w-8 text-[#AF4F06]" />
+    </div>
+  </CardContent>
+</Card>
+
+
             <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
@@ -132,16 +140,16 @@ export const PractitionerDashboard = () => {
           </div>
 
           {/* Main Dashboard Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8" >
             {/* Left Column */}
             <div className="lg:col-span-2 space-y-6">
               {/* Patient Management */}
-              <Card>
+              <Card style = {{ color: '#AF4F06'}}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div>
                       <CardTitle className="flex items-center space-x-2">
-                        <Users className="h-5 w-5 text-primary" />
+                        <Users className="h-5 w-5 text-primary" style = {{ color: '#AF4F06'}}/>
                         <span>Patient Management</span>
                       </CardTitle>
                       <CardDescription>Search and manage your patients</CardDescription>
@@ -151,6 +159,7 @@ export const PractitionerDashboard = () => {
                         variant={activeView === 'patients' ? 'default' : 'outline'}
                         size="sm"
                         onClick={() => setActiveView('patients')}
+                        style = {{ background: '#AF4F06'}}
                       >
                         Patients
                       </Button>
@@ -158,6 +167,7 @@ export const PractitionerDashboard = () => {
                         variant={activeView === 'queue' ? 'default' : 'outline'}
                         size="sm"
                         onClick={() => setActiveView('queue')}
+                         style = {{ background: '#AF4F06'}}
                       >
                         Queue
                       </Button>
@@ -173,14 +183,17 @@ export const PractitionerDashboard = () => {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Heart className="h-5 w-5 text-primary" />
+                    <Heart className="h-5 w-5 text-primary" style = {{ color: '#AF4F06'}}/>
                     <span>Health Monitoring</span>
                   </CardTitle>
                   <CardDescription>Latest patient vitals and IoT data</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {recentVitals.map((vital, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+<div
+  key={index}
+  className="flex items-center justify-between p-3 rounded-lg border border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/10 transition-colors"
+>
                       <div>
                         <h4 className="font-medium text-sm">{vital.patient}</h4>
                         <p className="text-sm text-muted-foreground">{vital.metric}</p>
@@ -196,8 +209,12 @@ export const PractitionerDashboard = () => {
                       </div>
                     </div>
                   ))}
-                  <Button variant="outline" className="w-full">
-                    <BarChart3 className="h-4 w-4 mr-2" />
+                  <Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>
+                    <BarChart3 className="h-4 w-4 mr-2" style = {{color: '#AF4F06'}}/>
                     View Analytics
                   </Button>
                 </CardContent>
@@ -210,7 +227,7 @@ export const PractitionerDashboard = () => {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Clock className="h-5 w-5 text-primary" />
+                    <Clock className="h-5 w-5 text-primary"style = {{color: '#AF4F06'}} />
                     <span>Queue Status</span>
                   </CardTitle>
                   <CardDescription>Real-time queue management</CardDescription>
@@ -230,9 +247,14 @@ export const PractitionerDashboard = () => {
                       <span className="font-medium">11:30 AM</span>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Optimize Queue
-                  </Button>
+                  <Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>
+  Optimize Queue
+</Button>
+
                 </CardContent>
               </Card>
 
@@ -240,21 +262,33 @@ export const PractitionerDashboard = () => {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Activity className="h-5 w-5 text-primary" />
+                    <Activity className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}}/>
                     <span>Therapy Sessions</span>
                   </CardTitle>
                   <CardDescription>Manage treatments</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30 transition-colors"
+>
                     <span>Create Treatment Plan</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30 transition-colors"
+>
                     <span>Update Progress</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30 transition-colors"
+>
                     <span>Schedule Follow-up</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
@@ -265,7 +299,7 @@ export const PractitionerDashboard = () => {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <TrendingUp className="h-5 w-5 text-primary" />
+                    <TrendingUp className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}}/>
                     <span>Performance</span>
                   </CardTitle>
                   <CardDescription>This week's metrics</CardDescription>
@@ -285,8 +319,11 @@ export const PractitionerDashboard = () => {
                       <span className="font-medium">28</span>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="w-full">
-                    View Detailed Report
+<Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>                    View Detailed Report
                   </Button>
                 </CardContent>
               </Card>

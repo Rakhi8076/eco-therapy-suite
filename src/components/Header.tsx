@@ -21,7 +21,9 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             <img src={logo} alt="PanchArogya Logo" className="h-12 w-auto" />
             <div>
-              <h1 className="text-2xl font-bold text-green-700">{t('PanchArogya')}</h1>
+<h1 className="text-2xl font-bold" style={{ color: '#AF4F06' }}>
+  {t('PanchArogya')}
+</h1>
               <p className="text-sm text-gray-600">{t('HOLISTIC HEALING')}</p>
             </div>
           </div>

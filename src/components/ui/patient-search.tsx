@@ -44,12 +44,13 @@ export const PatientSearch = () => {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground"  />
           <Input
             placeholder="Search patients by name or condition..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10"
+             style = {{ color: '#AF4F06'}}
           />
         </div>
         
@@ -92,10 +93,13 @@ export const PatientSearch = () => {
       {/* Patient List */}
       <div className="space-y-3">
         {filteredPatients.map((patient) => (
-          <div key={patient.id} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors cursor-pointer">
+<div
+  key={patient.id}
+  className="flex items-center justify-between p-4 rounded-lg border border-[#AF4F06] cursor-pointer hover:bg-[#AF4F06]/10 transition-colors"
+>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                <User className="h-6 w-6 text-primary" />
+                <User className="h-6 w-6 text-primary"style = {{color: '#AF4F06'}}/>
               </div>
               <div>
                 <h4 className="font-medium">{patient.name}</h4>
@@ -113,7 +117,7 @@ export const PatientSearch = () => {
               </div>
             </div>
             <div className="text-right space-y-2">
-              <Badge 
+              <Badge
                 variant={
                   patient.status === 'active' ? 'default' :
                   patient.status === 'pending' ? 'secondary' : 'outline'
@@ -124,7 +128,7 @@ export const PatientSearch = () => {
               </Badge>
               <div className="flex space-x-2">
                 <Button size="sm" variant="outline">View</Button>
-                <Button size="sm">Edit</Button>
+                <Button size="sm"style = {{background: '#AF4F06'}}>Edit</Button>
               </div>
             </div>
           </div>

@@ -45,9 +45,9 @@ export const InstitutionalAdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20"style={{ backgroundColor: '#FFF9F3' }}>
       {/* Header */}
-      <div className="bg-card/80 backdrop-blur-sm border-b border-border shadow-sm">
+      <div className="bg-card/80 backdrop-blur-sm border-b border-border shadow-sm"style = {{color: '#AF4F06'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -59,20 +59,24 @@ export const InstitutionalAdminDashboard = () => {
                 />
                 </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground">PanchArogya - Admin Portal</h1>
+                <h1 className="text-xl font-semibold text-foreground"style = {{color: '#AF4F06'}}>PanchArogya - Admin Portal</h1>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <NotificationBell />
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Building2 className="h-4 w-4 text-primary" />
+                  <Building2 className="h-4 w-4 text-primary"style = {{color: '#AF4F06'}} />
                 </div>
                 <span className="text-sm font-medium">{user?.name}</span>
               </div>
-              <Button variant="ghost" onClick={logout} size="sm">
-                Logout
-              </Button>
+              <Button
+                                                variant="ghost"
+                                                size="sm"
+                                                className="text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+                                              onClick={logout}>
+                                            Logout
+                                          </Button>
             </div>
           </div>
         </div>
@@ -83,25 +87,27 @@ export const InstitutionalAdminDashboard = () => {
         <div className="space-y-8">
           {/* Welcome Section */}
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold text-foreground">Clinic Overview</h2>
+            <h2 className="text-3xl font-bold text-foreground"style = {{color: '#AF4F06'}}>Clinic Overview</h2>
             <p className="text-muted-foreground">Manage your healthcare institution efficiently</p>
           </div>
 
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {clinicStats.map((stat, index) => (
-              <Card key={index} className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-                <CardContent className="p-6">
+<Card
+  key={index}
+  className="bg-[#AF4F06]/5 border-[#AF4F06]/20"
+>                <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-primary">{stat.label}</p>
-                      <p className="text-2xl font-bold text-primary">{stat.value}</p>
+                      <p className="text-sm font-medium text-primary"style = {{color: '#AF4F06'}}>{stat.label}</p>
+                      <p className="text-2xl font-bold text-primary"style = {{color: '#AF4F06'}}>{stat.value}</p>
                       <div className="flex items-center mt-1">
-                        <TrendingUp className="h-3 w-3 text-success mr-1" />
-                        <span className="text-xs text-success">{stat.change}</span>
+                        <TrendingUp className="h-3 w-3 text-success mr-1"/>
+                        <span className="text-xs text-success" >{stat.change}</span>
                       </div>
                     </div>
-                    <div className="text-primary">
+                    <div className="text-primary"style = {{color: '#AF4F06'}}>
                       {index === 0 && <Users className="h-8 w-8" />}
                       {index === 1 && <Activity className="h-8 w-8" />}
                       {index === 2 && <MapPin className="h-8 w-8" />}
@@ -118,17 +124,20 @@ export const InstitutionalAdminDashboard = () => {
             {/* Left Column */}
             <div className="lg:col-span-2 space-y-6">
               {/* Department Overview */}
-              <Card>
+              <Card style = {{color: '#AF4F06'}}>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Building2 className="h-5 w-5 text-primary" />
+                    <Building2 className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}}/>
                     <span>Department Management</span>
                   </CardTitle>
                   <CardDescription>Resource allocation and utilization</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {departments.map((dept, index) => (
-                    <div key={index} className="p-4 bg-muted/50 rounded-lg">
+<div
+  key={index}
+  className="p-4 rounded-lg border border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/10 transition-colors"
+>
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-medium">{dept.name}</h4>
                         <Badge variant="outline">{dept.utilization}% utilized</Badge>
@@ -146,12 +155,17 @@ export const InstitutionalAdminDashboard = () => {
                       <div className="mt-3 bg-muted/30 rounded-full h-2">
                         <div 
                           className="bg-primary rounded-full h-2 transition-all duration-300"
-                          style={{ width: `${dept.utilization}%` }}
+                          style = {{background: '#AF4F06'
+                          ,width: `${dept.utilization}%` }}
                         />
                       </div>
                     </div>
                   ))}
-                  <Button variant="outline" className="w-full">
+                  <Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>
                     <Settings className="h-4 w-4 mr-2" />
                     Manage Departments
                   </Button>
@@ -159,10 +173,10 @@ export const InstitutionalAdminDashboard = () => {
               </Card>
 
               {/* Analytics Dashboard */}
-              <Card>
+              <Card style = {{color: '#AF4F06'}}>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <BarChart3 className="h-5 w-5 text-primary" />
+                    <BarChart3 className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}}/>
                     <span>Clinic Analytics</span>
                   </CardTitle>
                   <CardDescription>Performance metrics and trends</CardDescription>
@@ -194,8 +208,12 @@ export const InstitutionalAdminDashboard = () => {
                     </div>
                   </div>
                   
-                  <Button variant="outline" className="w-full">
-                    View Detailed Reports
+<Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>
+                      View Detailed Reports
                   </Button>
                 </CardContent>
               </Card>
@@ -204,10 +222,10 @@ export const InstitutionalAdminDashboard = () => {
             {/* Right Column */}
             <div className="space-y-6">
               {/* System Alerts */}
-              <Card>
+              <Card style = {{color: '#AF4F06'}}>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Bell className="h-5 w-5 text-primary" />
+                    <Bell className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}}/>
                     <span>System Alerts</span>
                   </CardTitle>
                   <CardDescription>Important notifications</CardDescription>
@@ -234,35 +252,59 @@ export const InstitutionalAdminDashboard = () => {
                       </div>
                     </div>
                   ))}
-                  <Button variant="outline" size="sm" className="w-full">
-                    View All Alerts
+<Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>
+                      View All Alerts
                   </Button>
                 </CardContent>
               </Card>
 
               {/* Quick Actions */}
-              <Card>
+              <Card style = {{color: '#AF4F06'}}>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Settings className="h-5 w-5 text-primary" />
+                    <Settings className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}} />
                     <span>Quick Actions</span>
                   </CardTitle>
                   <CardDescription>Frequently used functions</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-between hover:bg-[#AF4F06]/30"
+                  > 
+
                     <span>Staff Scheduling</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30"
+> 
+
                     <span>Resource Management</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30"
+> 
+
                     <span>Patient Registration</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" className="w-full justify-between" size="sm">
+                  <Button
+  variant="ghost"
+  size="sm"
+  className="w-full justify-between hover:bg-[#AF4F06]/30"
+> 
+
                     <span>Billing & Reports</span>
                     <ChevronRight className="h-4 w-4" />
                   </Button>
@@ -270,10 +312,10 @@ export const InstitutionalAdminDashboard = () => {
               </Card>
 
               {/* Hospital Integration */}
-              <Card>
+              <Card style = {{color: '#AF4F06'}}>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Activity className="h-5 w-5 text-primary" />
+                    <Activity className="h-5 w-5 text-primary" style = {{color: '#AF4F06'}} />
                     <span>Integrations</span>
                   </CardTitle>
                   <CardDescription>Connected systems</CardDescription>
@@ -293,8 +335,12 @@ export const InstitutionalAdminDashboard = () => {
                       <Badge variant="secondary" className="text-xs">Pending</Badge>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Manage Integrations
+<Button
+  variant="outline"
+  size="sm"
+  className="w-full border-[#AF4F06] text-[#AF4F06] hover:bg-[#AF4F06]/30 transition-colors"
+>
+                      Manage Integrations
                   </Button>
                 </CardContent>
               </Card>

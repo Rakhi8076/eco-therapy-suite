@@ -49,29 +49,30 @@ const PractitionerForm: React.FC = () => {
   return (
     <Card className="max-w-md mx-auto shadow-lg border-0 bg-card/80 backdrop-blur-sm mt-6">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl">Practitioner Information</CardTitle>
+        <CardTitle className="text-2xl" style={{ color: '#AF4F06' }}>Practitioner Information</CardTitle>
         <CardDescription>Fill in your details to continue</CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-3" onSubmit={handleSubmit}>
+        <form className="space-y-3" onSubmit={handleSubmit} style={{ color: '#AF4F06' }}>
           {/* Personal Info */}
-          <Input name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} />
-          <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-          <Input name="phone" type="tel" placeholder="Phone Number" value={formData.phone} onChange={handleChange} />
+          <Input name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }} />
+          <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="phone" type="tel" placeholder="Phone Number" value={formData.phone} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }} />
 
           {/* Professional Info */}
-          <Input name="degree" placeholder="Medical Degree" value={formData.degree} onChange={handleChange} />
-          <Input name="specialization" placeholder="Specialization" value={formData.specialization} onChange={handleChange} />
-          <Input name="licenseNumber" placeholder="License Number" value={formData.licenseNumber} onChange={handleChange} />
+          <Input name="degree" placeholder="Medical Degree" value={formData.degree} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="specialization" placeholder="Specialization" value={formData.specialization} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
+          <Input name="licenseNumber" placeholder="License Number" value={formData.licenseNumber} onChange={handleChange}style={{ backgroundColor: '#FFFfff' }} />
 
           {/* Practice Info */}
-          <Input name="clinicName" placeholder="Hospital/Clinic Name" value={formData.clinicName} onChange={handleChange} />
+          <Input name="clinicName" placeholder="Hospital/Clinic Name" value={formData.clinicName} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }} />
           <textarea
             name="clinicAddress"
             placeholder="Clinic Address"
             value={formData.clinicAddress}
             onChange={handleChange}
             className="w-full p-2 rounded border border-gray-300"
+          style={{ backgroundColor: '#FFFfff' }}
           />
 
           {/* Documents */}
@@ -85,10 +86,10 @@ const PractitionerForm: React.FC = () => {
           </div>
 
           {/* Login Credentials */}
-          <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-          <Input name="otp" placeholder="OTP (optional)" value={formData.otp} onChange={handleChange} />
+          <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }} />
+          <Input name="otp" placeholder="OTP (optional)" value={formData.otp} onChange={handleChange} style={{ backgroundColor: '#FFFfff' }}/>
 
-          <Button type="submit" className="w-full mt-4">Submit</Button>
+          <Button type="submit" className="w-full mt-4"style={{ backgroundColor: '#AF4F06' }}>Submit</Button>
         </form>
       </CardContent>
     </Card>

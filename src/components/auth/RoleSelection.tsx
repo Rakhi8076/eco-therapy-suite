@@ -14,6 +14,8 @@ import SuperAdminForm from "@/components/forms/SuperAdminForm";
 export const RoleSelection = () => {
   const { user, logout, updateUserName, selectRole } = useAuth(); // ✅ added selectRole
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
+  const [isHoveringSwitch, setIsHoveringSwitch] = useState(false);
+
 
   // Updated: handleRoleSelect now updates AuthContext
   const handleRoleSelect = (role: UserRole) => {
@@ -38,8 +40,11 @@ export const RoleSelection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20 flex items-center justify-center p-4">
-      <div className="w-full max-w-6xl space-y-8">
+<div
+  className="min-h-screen flex items-center justify-center p-4"
+  style={{ backgroundColor: '#FFF9F3' }}
+>      
+<div className="w-full max-w-6xl space-y-8">
 
         {/* Header */}
         <div className="text-center space-y-4">
@@ -51,7 +56,7 @@ export const RoleSelection = () => {
             />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-foreground">
+            <h1 className="text-3xl font-bold text-foreground" style={{ color: '#CA8A04' }}>
               Welcome, {user?.name || "Guest"}!
             </h1>
             {!selectedRole && (
@@ -61,9 +66,20 @@ export const RoleSelection = () => {
             )}
           </div>
 
-          <Button variant="ghost" onClick={logout} className="text-sm">
-            Switch Account
-          </Button>
+          <Button
+  variant="ghost"
+  onClick={logout}
+  className="text-sm"
+  onMouseEnter={() => setIsHoveringSwitch(true)}
+  onMouseLeave={() => setIsHoveringSwitch(false)}
+  style={{
+    backgroundColor: isHoveringSwitch ? 'rgba(202, 138, 4, 0.3)' : 'transparent',
+    transition: 'background-color 0.3s ease'
+  }}
+>
+  Switch Account
+</Button>
+
         </div>
 
         {/* Role Selection Grid */}
@@ -71,29 +87,29 @@ export const RoleSelection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             <Card onClick={() => handleRoleSelect("patient")} className="cursor-pointer hover:shadow-lg">
               <CardHeader className="text-center">
-                <User className="h-8 w-8 mx-auto mb-2" />
-                <CardTitle>Patient</CardTitle>
+                <User className="h-8 w-8 mx-auto mb-2" style={{ color: '#AF4F06' }}/>
+                <CardTitle style={{ color: '#AF4F06' }}>Patient</CardTitle>
                 <CardDescription>Access therapy sessions</CardDescription>
               </CardHeader>
             </Card>
             <Card onClick={() => handleRoleSelect("practitioner")} className="cursor-pointer hover:shadow-lg">
               <CardHeader className="text-center">
-                <Stethoscope className="h-8 w-8 mx-auto mb-2" />
-                <CardTitle>Practitioner</CardTitle>
+                <Stethoscope className="h-8 w-8 mx-auto mb-2" style={{ color: '#AF4F06' }} />
+                <CardTitle style={{ color: '#AF4F06' }}>Practitioner</CardTitle>
                 <CardDescription>Manage patients</CardDescription>
               </CardHeader>
             </Card>
             <Card onClick={() => handleRoleSelect("institutional-admin")} className="cursor-pointer hover:shadow-lg">
               <CardHeader className="text-center">
-                <Building2 className="h-8 w-8 mx-auto mb-2" />
-                <CardTitle>Institutional Admin</CardTitle>
+                <Building2 className="h-8 w-8 mx-auto mb-2" style={{ color: '#AF4F06' }}/>
+                <CardTitle style={{ color: '#AF4F06' }}>Institutional Admin</CardTitle>
                 <CardDescription>Oversee clinic operations</CardDescription>
               </CardHeader>
             </Card>
             <Card onClick={() => handleRoleSelect("super-admin")} className="cursor-pointer hover:shadow-lg">
               <CardHeader className="text-center">
-                <Shield className="h-8 w-8 mx-auto mb-2" />
-                <CardTitle>Super Admin</CardTitle>
+                <Shield className="h-8 w-8 mx-auto mb-2" style={{ color: '#AF4F06' }}/>
+                <CardTitle style={{ color: '#AF4F06' }}>Super Admin</CardTitle>
                 <CardDescription>Platform-wide management</CardDescription>
               </CardHeader>
             </Card>

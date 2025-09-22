@@ -85,10 +85,10 @@ export const CalendarScheduler = ({ trigger }: { trigger: React.ReactNode }) => 
       <DialogTrigger asChild>
         {trigger}
       </DialogTrigger>
-      <DialogContent className="max-w-4xl">
+      <DialogContent className="max-w-4xl" style={{ color: '#AF4F06' }}>
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
-            <CalendarIcon className="h-5 w-5 text-primary" />
+            <CalendarIcon className="h-5 w-5 text-primary" style={{ color: '#AF4F06' }}/>
             <span>Schedule Therapy Session</span>
           </DialogTitle>
         </DialogHeader>
@@ -148,6 +148,7 @@ export const CalendarScheduler = ({ trigger }: { trigger: React.ReactNode }) => 
                 onClick={handleScheduleAppointment}
                 disabled={!selectedDate || !selectedTime || !selectedTherapy}
                 className="w-full"
+                style={{ background: '#AF4F06' }}
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Schedule Appointment
