@@ -14,7 +14,7 @@ const TreatmentSection = () => {
     { key: "Virechan", title: t("Virechan"), desc: t("Purgation therapy"), img: virechanIcon, info: t("Virechan is a medicated purgation therapy which cleanses the body from Pitta toxins.") },
     { key: "Vasti", title: t("Vasti"), desc: t("Medicated enema"), img: vastiIcon, info: t("Vasti is considered the most powerful Panchakarma therapy. It involves the administration of herbal oils and decoctions into the colon.") },
     { key: "Nasya", title: t("Nasya"), desc: t("Nasal administration"), img: nasyamIcon, info: t("Nasya is the administration of medicated oil through the nasal passage. It helps in cleansing and opening the channels of the head.") },
-    { key: "RaktaMoksha", title: t("RaktaMoksha"), desc: t("Bloodletting"), img: RaktaMokshaIcon, info: t("Rakta Mokshana is a procedure used to cleanse the blood. It is highly effective for various skin diseases and chronic infections.") },
+    { key: "Raktamokshana", title: t("Raktamokshana"), desc: t("Bloodletting"), img: RaktaMokshaIcon, info: t("Rakta Mokshana is a procedure used to cleanse the blood. It is highly effective for various skin diseases and chronic infections.") },
   ];
 
   return (

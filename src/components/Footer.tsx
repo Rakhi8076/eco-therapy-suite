@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-4 text-center">
             <p className="text-white">
-              Copyright 2025, PanchArogya. All Rights Reserved. Powered by CIN Universe.
+              Copyright 2025, PanchArogya. All Rights Reserved.
             </p>
           </div>
         </div>
