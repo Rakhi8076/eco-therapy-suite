@@ -7,6 +7,8 @@ import { AIChatbot } from '@/components/ui/ai-chatbot';
 import { CalendarScheduler } from '@/components/ui/calendar-scheduler';
 import { NotificationBell } from '@/components/ui/notification-bell';
 import { DietRecommendations } from '@/components/ui/diet-recommendations';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend , CartesianGrid} from "recharts";
 import {
   Calendar,
   Clock,
@@ -84,8 +86,17 @@ const DoctorsList = ({ doctors, onClose }) => (
 export const PatientDashboard = () => {
   const { user, logout } = useAuth();
   const [showDoctorsList, setShowDoctorsList] = useState(false);
+const [openGraph, setOpenGraph] = useState(false);
+  
+// Wellness Breakdown Data
+  const wellnessBreakdown = [
+    { name: "Sleep", score: 80 },
+    { name: "Nutrition", score: 90 },
+    { name: "Therapy Sessions", score: 75 },
+    { name: "Stress", score: 70 },
+  ];
 
-  const upcomingSessions = [
+const upcomingSessions = [
     { id: 1, therapy: 'Abhyanga Massage', time: '10:00 AM', practitioner: 'Dr. Priya Sharma' },
     { id: 2, therapy: 'Shirodhara', time: '2:00 PM', practitioner: 'Dr. Raj Patel' },
   ];
@@ -142,15 +153,37 @@ export const PatientDashboard = () => {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
-            <CardContent className="p-6 flex justify-between items-center">
-              <div>
-                <p className="text-sm font-medium text-success">Wellness Score</p>
-                <p className="text-2xl font-bold text-success">85%</p>
-              </div>
-              <Heart className="h-8 w-8 text-success" />
-            </CardContent>
-          </Card>
+          {/* Wellness Score Card */}
+      <Card
+        onClick={() => setOpenGraph(true)}
+        className="bg-gradient-to-br from-success/10 to-success/5 border-success/20 cursor-pointer hover:shadow-lg transition"
+      >
+        <CardContent className="p-6 flex justify-between items-center">
+          <div>
+            <p className="text-sm font-medium text-success">Wellness Score</p>
+            <p className="text-2xl font-bold text-success">85%</p>
+          </div>
+          <Heart className="h-8 w-8 text-success" />
+        </CardContent>
+      </Card>
+      {/* Wellness Breakdown Graph Modal */}
+      <Dialog open={openGraph} onOpenChange={setOpenGraph}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Wellness Breakdown</DialogTitle>
+          </DialogHeader>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={wellnessBreakdown} layout="vertical" margin={{ left: 50 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" domain={[0, 100]} />
+              <YAxis type="category" dataKey="name" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="score" fill="hsl(var(--success))" radius={[0, 8, 8, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </DialogContent>
+      </Dialog>
           <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
             <CardContent className="p-6 flex justify-between items-center">
               <div>
