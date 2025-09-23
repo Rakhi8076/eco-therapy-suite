@@ -9,7 +9,9 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   preview: {
-    allowedHosts: ['ayursutra-u5pb.onrender.com'],
+    host: true,
+    port: 3000,
+    allowedHosts: ['ayursutra-u5pb.onrender.com']
   },
   plugins: [
     react(),
@@ -24,4 +26,3 @@ export default defineConfig(({ mode }) => ({
     exclude: ["lucide-react"],
   },
 }));
-
