@@ -1,77 +1,47 @@
-<<<<<<< HEAD
-# Welcome to your Lovable project
 
-## Project info
+🌿 PanchArogya – Eco Therapy Suite
 
-**URL**: https://lovable.dev/projects/6dba69b1-57d4-4753-8cd3-b924820ccdac
+PanchArogya is a React-based web application that promotes holistic wellness with the help of Ayurveda, Panchakarma, Yoga, and Meditation practices. The platform provides an easy-to-use interface to explore therapies, track wellness, and access therapy-related resources.
 
-## How can I edit this code?
+✨ Features
 
-There are several ways of editing your application.
+🧘 Therapy Information – Detailed insights on Panchakarma & Ayurvedic treatments.
 
-**Use Lovable**
+📊 Dashboard – Displays GPA, attendance, subjects summary (for demo version).
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6dba69b1-57d4-4753-8cd3-b924820ccdac) and start prompting.
+👥 Users Page – Fetches data from API (jsonplaceholder) to display user details.
 
-Changes made via Lovable will be committed automatically to this repo.
+🔐 Authentication – Login & signup pages with dummy validation.
 
-**Use your preferred IDE**
+🌙 Dark Mode – Optional theme switcher for better user experience.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+📱 Responsive UI – Optimized for both mobile & desktop.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+📂 Project Structure
 
-Follow these steps:
+src/components/auth/ – Login, Signup, Role Selection, Logout.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+src/pages/ – Home, Dashboard, Users.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+src/assets/ – Local images & icons.
 
-# Step 3: Install the necessary dependencies.
-npm i
+App.jsx – Main app with routing.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+package.json – Project dependencies.
 
-**Edit a file directly in GitHub**
+🚀 Live Demo
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Check out the live website here:
+👉 https://pancharogya.onrender.com/login
 
-**Use GitHub Codespaces**
+🛠️ Tech Stack
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Frontend: React, Tailwind CSS
 
-## What technologies are used for this project?
+Routing: React Router
 
-This project is built with:
+State & API: Fetch / Axios
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+i18n: i18next, react-i18next
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6dba69b1-57d4-4753-8cd3-b924820ccdac) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-=======
-front-page
->>>>>>> frontpage/main
+Deployment: Vercel / Netlify / GitHub Pages
