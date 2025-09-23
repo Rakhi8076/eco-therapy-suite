@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   preview: {
-    allowedHosts: ["pancharogya.onrender.com"],
+    allowedHosts: ['ayursutra-bcoa.onrender.com'],
   },
   plugins: [
     react(),
