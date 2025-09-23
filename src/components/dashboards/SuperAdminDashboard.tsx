@@ -66,7 +66,7 @@ export const SuperAdminDashboard = () => {
                 />
                 </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground"style={{ color: '#AF4F06' }}>PanchArogya - Super Admin</h1>
+                <h1 className="text-xl font-semibold text-foreground"style={{ color: '#AF4F06' }}>AyurSutra - Super Admin</h1>
               </div>
             </div>
             <div className="flex items-center space-x-4">

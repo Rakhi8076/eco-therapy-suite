@@ -32,7 +32,7 @@ const [isHoveringGoogle, setIsHoveringGoogle] = useState(false);
       await login(email, password, 'User');
       toast({
         title: "Login successful",
-        description: "Welcome to PanchArogya!"
+        description: "Welcome to AyurSutra!"
       });
 
       // ✅ Redirect to RoleSelection
@@ -88,7 +88,7 @@ const [isHoveringGoogle, setIsHoveringGoogle] = useState(false);
           </div>
           <div>
   <h1 className="text-3xl font-bold" style={{ color: '#CA8A04' }}>
-    PanchArogya
+    AyurSutra
   </h1>
   <p className="text-muted-foreground mt-2">Holistic Ayurvedic Healthcare Platform</p>
 </div>

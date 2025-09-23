@@ -23,7 +23,7 @@ const Header = () => {
             <img src={logo} alt="PanchArogya Logo" className="h-12 w-auto" />
             <div>
               <h1 className="text-2xl font-bold" style={{ color: '#AF4F06' }}>
-                {t('PanchArogya')}
+                {t('AyurSutra')}
               </h1>
               <p className="text-sm text-gray-600">{t('HOLISTIC HEALING')}</p>
             </div>

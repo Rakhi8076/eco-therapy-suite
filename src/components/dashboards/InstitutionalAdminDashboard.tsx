@@ -59,7 +59,7 @@ export const InstitutionalAdminDashboard = () => {
                 />
                 </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground"style = {{color: '#AF4F06'}}>PanchArogya - Admin Portal</h1>
+                <h1 className="text-xl font-semibold text-foreground"style = {{color: '#AF4F06'}}>AyurSutra - Admin Portal</h1>
               </div>
             </div>
             <div className="flex items-center space-x-4">

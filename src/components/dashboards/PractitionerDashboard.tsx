@@ -99,7 +99,7 @@ export const PractitionerDashboard = () => {
                 />
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground" style={{ color: '#AF4F06' }}>PanchArogya - Practitioner</h1>
+                <h1 className="text-xl font-semibold text-foreground" style={{ color: '#AF4F06' }}>AyurSutra - Practitioner</h1>
               </div>
             </div>
             <div className="flex items-center space-x-4" style={{ color: '#AF4F06' }}>

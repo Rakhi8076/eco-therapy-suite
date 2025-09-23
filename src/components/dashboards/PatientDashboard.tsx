@@ -86,9 +86,9 @@ const DoctorsList = ({ doctors, onClose }) => (
 export const PatientDashboard = () => {
   const { user, logout } = useAuth();
   const [showDoctorsList, setShowDoctorsList] = useState(false);
-const [openGraph, setOpenGraph] = useState(false);
-  
-// Wellness Breakdown Data
+  const [openGraph, setOpenGraph] = useState(false);
+
+  // Wellness Breakdown Data
   const wellnessBreakdown = [
     { name: "Sleep", score: 80 },
     { name: "Nutrition", score: 90 },
@@ -96,7 +96,7 @@ const [openGraph, setOpenGraph] = useState(false);
     { name: "Stress", score: 70 },
   ];
 
-const upcomingSessions = [
+  const upcomingSessions = [
     { id: 1, therapy: 'Abhyanga Massage', time: '10:00 AM', practitioner: 'Dr. Priya Sharma' },
     { id: 2, therapy: 'Shirodhara', time: '2:00 PM', practitioner: 'Dr. Raj Patel' },
   ];
@@ -119,7 +119,7 @@ const upcomingSessions = [
               <div className="w-12 h-12 rounded-full shadow-lg overflow-hidden">
                 <img src="/logo.png" alt="App Logo" className="w-full h-full object-cover" />
               </div>
-              <h1 className="text-xl font-semibold text-foreground" style={{ color: '#AF4F06' }}>PanchArogya</h1>
+              <h1 className="text-xl font-semibold text-foreground" style={{ color: '#AF4F06' }}>AyurSutra</h1>
             </div>
             <div className="flex items-center space-x-4">
               <NotificationBell />
@@ -147,43 +147,43 @@ const upcomingSessions = [
 
         {/* Welcome Section */}
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-foreground" style={{ color: '#AF4F06' }}>Welcome back, {user?.name}!</h2>
+          <h2 className="text-3xl font-bold text-foreground" style={{ color: '#AF4F06' }}>Welcome  {user?.name}!</h2>
           <p className="text-muted-foreground">Continue your wellness journey with personalized Ayurvedic care</p>
         </div>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Wellness Score Card */}
-      <Card
-        onClick={() => setOpenGraph(true)}
-        className="bg-gradient-to-br from-success/10 to-success/5 border-success/20 cursor-pointer hover:shadow-lg transition"
-      >
-        <CardContent className="p-6 flex justify-between items-center">
-          <div>
-            <p className="text-sm font-medium text-success">Wellness Score</p>
-            <p className="text-2xl font-bold text-success">85%</p>
-          </div>
-          <Heart className="h-8 w-8 text-success" />
-        </CardContent>
-      </Card>
-      {/* Wellness Breakdown Graph Modal */}
-      <Dialog open={openGraph} onOpenChange={setOpenGraph}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Wellness Breakdown</DialogTitle>
-          </DialogHeader>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={wellnessBreakdown} layout="vertical" margin={{ left: 50 }}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis type="number" domain={[0, 100]} />
-              <YAxis type="category" dataKey="name" />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="score" fill="hsl(var(--success))" radius={[0, 8, 8, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </DialogContent>
-      </Dialog>
+          <Card
+            onClick={() => setOpenGraph(true)}
+            className="bg-gradient-to-br from-success/10 to-success/5 border-success/20 cursor-pointer hover:shadow-lg transition"
+          >
+            <CardContent className="p-6 flex justify-between items-center">
+              <div>
+                <p className="text-sm font-medium text-success">Wellness Score</p>
+                <p className="text-2xl font-bold text-success">85%</p>
+              </div>
+              <Heart className="h-8 w-8 text-success" />
+            </CardContent>
+          </Card>
+          {/* Wellness Breakdown Graph Modal */}
+          <Dialog open={openGraph} onOpenChange={setOpenGraph}>
+            <DialogContent className="max-w-lg">
+              <DialogHeader>
+                <DialogTitle>Wellness Breakdown</DialogTitle>
+              </DialogHeader>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={wellnessBreakdown} layout="vertical" margin={{ left: 50 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" domain={[0, 100]} />
+                  <YAxis type="category" dataKey="name" />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="score" fill="hsl(var(--success))" radius={[0, 8, 8, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </DialogContent>
+          </Dialog>
           <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
             <CardContent className="p-6 flex justify-between items-center">
               <div>
@@ -268,19 +268,30 @@ const upcomingSessions = [
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4" >
-                  {['Abhyanga Massage', 'Shirodhara Therapy', 'Panchakarma Process', 'Meditation Guide'].map((video, index) => (
-                    <div key={index} className="group cursor-pointer">
+                  {[
+                    { title: 'Abhyanga Massage', url: 'https://example.com/abhyanga' },
+                    { title: 'Shirodhara Therapy', url: 'https://example.com/shirodhara' },
+                    { title: 'Panchakarma Process', url: 'https://example.com/panchakarma' },
+                    { title: 'Meditation Guide', url: 'https://example.com/meditation' }
+                  ].map((video, index) => (
+                    <a
+                      key={index}
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group cursor-pointer block"
+                    >
                       <div className="aspect-video rounded-lg flex items-center justify-center mb-2 bg-[#CFDC54]/40 transition-colors">
                         <Play className="h-8 w-8 text-primary" style={{ color: '#cfdc54ff' }} />
                       </div>
-                      <h4 className="font-medium text-sm">{video}</h4>
-                    </div>
+                      <h4 className="font-medium text-sm">{video.title}</h4>
+                    </a>
                   ))}
                 </div>
               </CardContent>
             </Card>
 
-            {/* Community Hub - Moved to Left Column */}
+            {/* Community Hub */}
             <Card style={{ color: '#AF4F06' }}>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
@@ -441,5 +452,3 @@ const upcomingSessions = [
     </div>
   );
 };
-
-
