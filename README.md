@@ -1,77 +1,52 @@
-<<<<<<< HEAD
-# Welcome to your Lovable project
+# 🌿 PanchArogya – Eco Therapy Suite
 
-## Project info
+PanchArogya is a React-based web application that promotes holistic wellness through Ayurveda, Panchakarma, Yoga, and Meditation practices. The platform provides an easy-to-use interface to explore therapies, track wellness, and access therapy-related resources.
 
-**URL**: https://lovable.dev/projects/6dba69b1-57d4-4753-8cd3-b924820ccdac
+## ✨ Features
 
-## How can I edit this code?
+-   **🧘 Therapy Information:** Detailed insights on Panchakarma & Ayurvedic treatments.
+-   **📊 Dashboard:** Displays GPA, attendance, and a subjects summary (for demo purposes).
+-   **👥 Users Page:** Fetches data from an API (jsonplaceholder) to display user details.
+-   **🔐 Authentication:** Login & signup pages with dummy validation.
+-   **🌙 Dark Mode:** An optional theme switcher for a better user experience.
+-   **📱 Responsive UI:** Optimized for both mobile and desktop.
 
-There are several ways of editing your application.
+## 📂 Project Structure
 
-**Use Lovable**
+-   `src/components/auth/`: Contains components for Login, Signup, Role Selection, and Logout.
+-   `src/pages/`: Holds core page components like Home, Dashboard, and Users.
+-   `src/assets/`: Stores local images & icons.
+-   `App.jsx`: The main application file with routing.
+-   `package.json`: Manages all project dependencies.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6dba69b1-57d4-4753-8cd3-b924820ccdac) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+-   **Frontend:** React, Tailwind CSS
+-   **Routing:** React Router
+-   **State & API:** Fetch / Axios
+-   **i18n:** i18next, react-i18next
+-   **Deployment:** Vercel / Netlify / GitHub Pages
 
-**Use your preferred IDE**
+## 🚀 Live Demo
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Check out the live website here: 👉 [https://pancharogya.onrender.com/](https://pancharogya.onrender.com/)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+### **Deployment Instructions (for Render)**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+To fix the "Page Not Found" error on Render, follow these steps:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1.  **Dashboard:** Go to your **Render dashboard** and select your web service.
+2.  **Settings:** Navigate to the **Settings** tab.
+3.  **Build & Deploy:** Configure the following commands under the **Build & Deploy** section:
 
-# Step 3: Install the necessary dependencies.
-npm i
+    -   **Build Command:** `npm install && npm run build`
+        _Explanation: This command first installs all dependencies and then builds your React application for production, creating a `dist` folder._
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+    -   **Start Command:** `npm run start`
+        _Explanation: This command runs the script in your `package.json` file that starts the production server to serve the built files._
 
-**Edit a file directly in GitHub**
+4.  **Save & Deploy:** Save the changes and trigger a new **Manual Deploy**. This will rebuild and redeploy your application with the correct settings.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6dba69b1-57d4-4753-8cd3-b924820ccdac) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-=======
-front-page
->>>>>>> frontpage/main
+**Note:** Since your `package.json` file is in the root of your repository, you should leave the **Root Directory** field blank on Render.
